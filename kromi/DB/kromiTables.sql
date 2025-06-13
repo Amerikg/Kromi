@@ -46,7 +46,18 @@ CREATE TABLE enlaces_productos (
     tipo_enlace VARCHAR(50) DEFAULT 'editor'
 );
 
+CREATE TABLE precios_productos (
+    id SERIAL PRIMARY KEY,
+    producto_id INTEGER REFERENCES productos(id) ON DELETE CASCADE,
+    precio DECIMAL(10,2) CHECK (precio >= 0),
+    fecha_inicio DATE NOT NULL,
+    fecha_fin DATE,
+    fuente VARCHAR(100),
+    UNIQUE(producto_id, fecha_inicio)
+);
+
 CREATE INDEX idx_productos_codigo_barras ON productos(codigo_barras);
 CREATE INDEX idx_productos_categoria ON productos(categoria_id);
 CREATE INDEX idx_imagenes_producto ON imagenes_productos(producto_id);
 CREATE INDEX idx_enlaces_producto ON enlaces_productos(producto_id);
+CREATE INDEX idx_precios_producto ON precios_productos(producto_id);
