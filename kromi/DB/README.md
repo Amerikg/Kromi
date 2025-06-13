@@ -122,4 +122,4 @@ This project aims to consolidate and normalize product information from multiple
 
 ## Database Diagram
 
-![Database Diagram](/kromidbDiagram.png)
+![Database Diagram](kromi\DB\kromidbDiagram.png)
